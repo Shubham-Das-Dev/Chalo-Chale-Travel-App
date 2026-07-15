@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>ChaloChale - Your Travel Companion</title>
+    <style>
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #004e89;
+            --accent-color: #f7c59f;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--secondary-color), #003366) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            color: var(--primary-color) !important;
+        }
+        
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        .btn-warning {
+            background-color: var(--primary-color);
+            border: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn-warning:hover {
+            background-color: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .carousel-item img {
+            height: 500px;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+        
+        .carousel-caption {
+            bottom: 30%;
+        }
+        
+        .carousel-caption h5 {
+            font-size: 3rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .carousel-caption p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .section-title {
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .destination-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .destination-card img {
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .destination-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .package-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .package-card img {
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .price-tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, var(--secondary-color), #003366);
+            color: white;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icon {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: transform 0.3s;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2);
+            color: var(--primary-color);
+        }
+        
+        .hero-badge {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#"><i class="fas fa-plane-departure me-2"></i>ChaloChale</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-home me-1"></i>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#destinations"><i class="fas fa-map-marker-alt me-1"></i>Destinations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#packages"><i class="fas fa-suitcase me-1"></i>Packages</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact"><i class="fas fa-envelope me-1"></i>Contact</a>
+        </li>
+      </ul>
+      <button type="button" class="btn btn-warning m-1"><i class="fas fa-sign-in-alt me-1"></i>Login</button>
+      <button type="button" class="btn btn-warning"><i class="fas fa-user-plus me-1"></i>Sign up</button>
+    </div>
+  </div>
+</nav>
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="4000">
+      <img src="Images/Beach image1.jpg" class="d-block w-100" alt="Beautiful Beach">
+      <div class="carousel-caption d-none d-md-block">
+        <span class="hero-badge">🌴 Paradise Awaits</span>
+        <h5>Explore Stunning Beaches</h5>
+        <p>Discover pristine coastlines and crystal-clear waters around the world</p>
+        <button class="btn btn-warning btn-lg mt-3">Explore Now</button>
+      </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="4000">
+      <img src="Images/Mountain image.jpg" class="d-block w-100" alt="Mountain Adventure">
+      <div class="carousel-caption d-none d-md-block">
+        <span class="hero-badge">🏔️ Adventure Calls</span>
+        <h5>Conquer Majestic Mountains</h5>
+        <p>Experience breathtaking views and thrilling mountain expeditions</p>
+        <button class="btn btn-warning btn-lg mt-3">Start Adventure</button>
+      </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="4000">
+      <img src="Images/Beach image2.avif" class="d-block w-100" alt="Tropical Paradise">
+      <div class="carousel-caption d-none d-md-block">
+        <span class="hero-badge">✨ Dream Destinations</span>
+        <h5>Tropical Paradise Escapes</h5>
+        <p>Relax in luxury resorts and explore exotic locations</p>
+        <button class="btn btn-warning btn-lg mt-3">Book Your Trip</button>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div> 
+<section class="py-5 bg-light">
+    <div class="container">
+        <h3 class="text-center fw-bold section-title">Why Choose ChaloChale?</h3>
+        <div class="row g-4 mt-2">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="fas fa-ticket-alt feature-icon"></i>
+                    <h3 class="text-dark">Easy Booking</h3>
+                    <p class="text-muted">Book your travel tickets in just a few clicks with our seamless booking system</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="fas fa-hotel feature-icon"></i>
+                    <h3 class="text-dark">Best Hotels</h3>
+                    <p class="text-muted">Access premium hotels and resorts at unbeatable prices worldwide</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="fas fa-headset feature-icon"></i>
+                    <h3 class="text-dark">24/7 Support</h3>
+                    <p class="text-muted">Round-the-clock customer support to assist you throughout your journey</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="destinations" class="py-5">
+    <div class="container">
+        <h3 class="text-center fw-bold section-title">Popular Destinations</h3>
+        <div class="row g-4 mt-2">
+            <div class="col-md-4">
+                <div class="card destination-card">
+                    <img src="Images/Taj Mahal.jpg" class="card-img-top" alt="Taj Mahal">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Taj Mahal</h5>
+                            <span class="badge bg-warning text-dark">India</span>
+                        </div>
+                        <p class="card-text">The Taj Mahal is an ivory-white marble mausoleum on the banks of the Yamuna River in Agra, India.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted"><i class="fas fa-star text-warning"></i> 4.9</span>
+                            <a href="#" class="btn btn-primary btn-sm">Explore <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card destination-card">
+                    <img src="Images/Great wall of China.jpg" class="card-img-top" alt="Great Wall of China">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Great Wall of China</h5>
+                            <span class="badge bg-warning text-dark">China</span>
+                        </div>
+                        <p class="card-text">The Great Wall of China is a massive, 21,196-kilometer series of fortifications.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted"><i class="fas fa-star text-warning"></i> 4.8</span>
+                            <a href="#" class="btn btn-primary btn-sm">Explore <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card destination-card">
+                    <img src="Images/Christ the redeemer.webp" class="card-img-top" alt="Christ the Redeemer">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Christ the Redeemer</h5>
+                            <span class="badge bg-warning text-dark">Brazil</span>
+                        </div>
+                        <p class="card-text">Christ the Redeemer is a colossal Art Deco statue of Jesus Christ in Rio de Janeiro, Brazil.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted"><i class="fas fa-star text-warning"></i> 4.7</span>
+                            <a href="#" class="btn btn-primary btn-sm">Explore <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="packages" class="py-5 bg-light">
+    <div class="container">
+        <h3 class="text-center fw-bold section-title">Featured Packages</h3>
+        <div class="row g-4 mt-2">
+            <div class="col-md-4">
+                <div class="card package-card">
+                    <img src="Images/Beach image3.jpg" class="card-img-top" alt="Goa Beach">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Goa Beach Paradise</h5>
+                            <span class="price-tag">₹25,999</span>
+                        </div>
+                        <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt me-1"></i>5 Days/4 Nights</h6>
+                        <p class="card-text small">Experience the vibrant beaches of Goa with luxury stays and exciting water sports.</p>
+                        <ul class="list-unstyled small mb-3">
+                            <li><i class="fas fa-check text-success me-1"></i> 4-Star Hotel</li>
+                            <li><i class="fas fa-check text-success me-1"></i> Breakfast Included</li>
+                            <li><i class="fas fa-check text-success me-1"></i> Airport Transfer</li>
+                        </ul>
+                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-shopping-cart me-1"></i>Book Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card package-card">
+                    <img src="Images/Beach image4.jpg" class="card-img-top" alt="Mountain Adventure">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Mountain Adventure</h5>
+                            <span class="price-tag">₹32,499</span>
+                        </div>
+                        <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt me-1"></i>6 Days/5 Nights</h6>
+                        <p class="card-text small">Trek through breathtaking mountains and enjoy serene nature retreats.</p>
+                        <ul class="list-unstyled small mb-3">
+                            <li><i class="fas fa-check text-success me-1"></i> 3-Star Resort</li>
+                            <li><i class="fas fa-check text-success me-1"></i> All Meals Included</li>
+                            <li><i class="fas fa-check text-success me-1"></i> Trekking Guide</li>
+                        </ul>
+                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-shopping-cart me-1"></i>Book Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card package-card">
+                    <img src="Images/Beach image2.avif" class="card-img-top" alt="Tropical Escape">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Tropical Escape</h5>
+                            <span class="price-tag">₹45,999</span>
+                        </div>
+                        <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-calendar-alt me-1"></i>7 Days/6 Nights</h6>
+                        <p class="card-text small">Luxury tropical getaway with spa treatments and private beach access.</p>
+                        <ul class="list-unstyled small mb-3">
+                            <li><i class="fas fa-check text-success me-1"></i> 5-Star Resort</li>
+                            <li><i class="fas fa-check text-success me-1"></i> All Inclusive</li>
+                            <li><i class="fas fa-check text-success me-1"></i> Spa Package</li>
+                        </ul>
+                        <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fas fa-shopping-cart me-1"></i>Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-plane me-2"></i>Book Your Trip</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="fullName" class="form-label fw-bold"><i class="fas fa-user me-1"></i>Full Name</label>
+              <input type="text" class="form-control" id="fullName" placeholder="Enter Your Name">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="email" class="form-label fw-bold"><i class="fas fa-envelope me-1"></i>Email Address</label>
+              <input type="email" class="form-control" id="email" placeholder="name@example.com">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="destination" class="form-label fw-bold"><i class="fas fa-map-marker-alt me-1"></i>Select Destination</label>
+              <select class="form-select" id="destination">
+                <option value="">Choose Destination</option>
+                <option value="goa">Goa Beach Paradise</option>
+                <option value="taj">Taj Mahal</option>
+                <option value="china">Great Wall of China</option>
+                <option value="brazil">Christ the Redeemer</option>
+                <option value="mountain">Mountain Adventure</option>
+                <option value="tropical">Tropical Escape</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="travelDate" class="form-label fw-bold"><i class="fas fa-calendar me-1"></i>Travel Date</label>
+              <input type="date" class="form-control" id="travelDate">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="travelers" class="form-label fw-bold"><i class="fas fa-users me-1"></i>Number of Travelers</label>
+              <select class="form-select" id="travelers">
+                <option value="1">1 Person</option>
+                <option value="2">2 People</option>
+                <option value="3">3 People</option>
+                <option value="4">4 People</option>
+                <option value="5">5+ People</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="phone" class="form-label fw-bold"><i class="fas fa-phone me-1"></i>Phone Number</label>
+              <input type="tel" class="form-control" id="phone" placeholder="+91 XXXXX XXXXX">
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="specialRequests" class="form-label fw-bold"><i class="fas fa-comment me-1"></i>Special Requests</label>
+          <textarea class="form-control" id="specialRequests" rows="3" placeholder="Any special requirements or requests?"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane me-1"></i>Submit Booking Request</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Testimonials Section -->
+<section class="py-5">
+    <div class="container">
+        <h3 class="text-center fw-bold section-title">What Our Travelers Say</h3>
+        <div class="row g-4 mt-2">
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="Images/Beach image1.jpg" class="testimonial-img me-3" alt="Traveler">
+                        <div>
+                            <h5 class="mb-0">Priya Sharma</h5>
+                            <small class="text-muted">Goa Trip</small>
+                        </div>
+                    </div>
+                    <p class="mb-2"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i></p>
+                    <p class="text-muted">"Amazing experience! The Goa package was perfectly planned. Hotels were excellent and the beach activities were unforgettable."</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="Images/Mountain image.jpg" class="testimonial-img me-3" alt="Traveler">
+                        <div>
+                            <h5 class="mb-0">Rahul Verma</h5>
+                            <small class="text-muted">Mountain Adventure</small>
+                        </div>
+                    </div>
+                    <p class="mb-2"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i></p>
+                    <p class="text-muted">"The mountain trek was breathtaking! Our guide was knowledgeable and the scenery was spectacular. Highly recommend!"</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="Images/Beach image2.avif" class="testimonial-img me-3" alt="Traveler">
+                        <div>
+                            <h5 class="mb-0">Anita Patel</h5>
+                            <small class="text-muted">Tropical Escape</small>
+                        </div>
+                    </div>
+                    <p class="mb-2"><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star text-warning"></i><i class="fas fa-star-half-alt text-warning"></i></p>
+                    <p class="text-muted">"Luxury at its finest! The tropical escape package was worth every penny. The spa treatments were divine."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5 bg-light">
+    <div class="container">
+        <h3 class="text-center fw-bold section-title">Get In Touch</h3>
+        <div class="row g-4 mt-2">
+            <div class="col-md-4 text-center">
+                <div class="p-4">
+                    <i class="fas fa-phone-alt feature-icon"></i>
+                    <h5 class="mt-3">Call Us</h5>
+                    <p class="text-muted">+91 98765 43210</p>
+                    <p class="text-muted">+91 87654 32109</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="p-4">
+                    <i class="fas fa-envelope feature-icon"></i>
+                    <h5 class="mt-3">Email Us</h5>
+                    <p class="text-muted">info@chalochale.com</p>
+                    <p class="text-muted">support@chalochale.com</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="p-4">
+                    <i class="fas fa-map-marker-alt feature-icon"></i>
+                    <h5 class="mt-3">Visit Us</h5>
+                    <p class="text-muted">123 Travel Street</p>
+                    <p class="text-muted">Mumbai, India 400001</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced Footer -->
+<footer class="footer py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <h4 class="mb-4"><i class="fas fa-plane-departure me-2"></i>ChaloChale</h4>
+                <p>Your trusted travel companion for unforgettable journeys around the world. We make travel dreams come true.</p>
+                <div class="mt-3">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <h5 class="mb-4">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#">Home</a></li>
+                    <li class="mb-2"><a href="#destinations">Destinations</a></li>
+                    <li class="mb-2"><a href="#packages">Packages</a></li>
+                    <li class="mb-2"><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5 class="mb-4">Popular Places</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#">Goa</a></li>
+                    <li class="mb-2"><a href="#">Taj Mahal</a></li>
+                    <li class="mb-2"><a href="#">China</a></li>
+                    <li class="mb-2"><a href="#">Brazil</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5 class="mb-4">Newsletter</h5>
+                <p class="mb-3">Subscribe to get special offers and travel updates.</p>
+                <div class="input-group">
+                    <input type="email" class="form-control" placeholder="Your email">
+                    <button class="btn btn-warning" type="button">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <hr class="my-4 bg-light">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0">© 2026 ChaloChale. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="mb-0">Designed with <i class="fas fa-heart text-danger"></i> using Bootstrap 5</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
