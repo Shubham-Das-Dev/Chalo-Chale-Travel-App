@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Destinations - ChaloChale</title>
+    <style>
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #004e89;
+            --accent-color: #f7c59f;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--secondary-color), #003366) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            color: var(--primary-color) !important;
+        }
+        
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        .btn-warning {
+            background-color: var(--primary-color);
+            border: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn-warning:hover {
+            background-color: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--secondary-color), #003366);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('Images/Beach image1.jpg') center/cover;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-title {
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        .destination-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .destination-card img {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .destination-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, var(--secondary-color), #003366);
+            color: white;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icon {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: transform 0.3s;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2);
+            color: var(--primary-color);
+        }
+        
+        .stats-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#"><i class="fas fa-plane-departure me-2"></i>ChaloChale</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html"><i class="fas fa-home me-1"></i>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Destination.html"><i class="fas fa-map-marker-alt me-1"></i>Destinations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Package.html"><i class="fas fa-suitcase me-1"></i>Packages</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Contact.html"><i class="fas fa-envelope me-1"></i>Contact</a>
+        </li>
+      </ul>
+  <button type="button" class="btn btn-warning m-1"  onclick="window.location.href='Login.html'"><i class="fas fa-sign-in-alt me-1"></i>Login</button>
+      <button type="button" class="btn btn-warning" onclick="window.location.href='Sign-Up.html'"><i class="fas fa-user-plus me-1"></i>Sign up</button>
+    </div>
+  </div>
+</nav>
+<section class="hero-section">
+    <div class="container hero-content text-center">
+        <h1 class="display-3 fw-bold mb-4">Explore Amazing Destinations</h1>
+        <p class="lead mb-4">Discover breathtaking places around the world with ChaloChale</p>
+        <div class="row g-4 mt-4">
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <div class="stats-number">50+</div>
+                    <p class="text-muted mb-0">Destinations</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <div class="stats-number">10K+</div>
+                    <p class="text-muted mb-0">Happy Travelers</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <div class="stats-number">100+</div>
+                    <p class="text-muted mb-0">Packages</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stats-card">
+                    <div class="stats-number">4.9</div>
+                    <p class="text-muted mb-0">Rating</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Video Section -->
+<section class="py-5">
+    <div class="container">
+        <h3 class="text-center fw-bold section-title">Experience The Journey</h3>
+        <div class="row mt-4">
+            <div class="col-md-8 mx-auto">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Travel Experience" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container">
+        <h3 class="text-center fw-bold section-title">Popular Destinations</h3>
+        <div class="row g-4 mt-2">
+            <div class="col-md-4">
+                <div class="card destination-card">
+                    <img src="Images/Taj Mahal.jpg" class="card-img-top" alt="Taj Mahal">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Taj Mahal</h5>
+                            <span class="badge bg-warning text-dark">India</span>
+                        </div>
+                        <p class="card-text">The Taj Mahal is an ivory-white marble mausoleum on the banks of the Yamuna River in Agra, India.</p>
+                        <div class="mb-2">
+                            <small class="text-muted"><i class="fas fa-clock me-1"></i>Best time: Oct-Mar</small>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted"><i class="fas fa-star text-warning"></i> 4.9</span>
+                            <a href="#" class="btn btn-primary btn-sm">Explore <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card destination-card">
+                    <img src="Images/Great wall of China.jpg" class="card-img-top" alt="Great Wall of China">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Great Wall of China</h5>
+                            <span class="badge bg-warning text-dark">China</span>
+                        </div>
+                        <p class="card-text">The Great Wall of China is a massive, 21,196-kilometer series of fortifications.</p>
+                        <div class="mb-2">
+                            <small class="text-muted"><i class="fas fa-clock me-1"></i>Best time: Sep-Nov</small>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted"><i class="fas fa-star text-warning"></i> 4.8</span>
+                            <a href="#" class="btn btn-primary btn-sm">Explore <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card destination-card">
+                    <img src="Images/Christ the redeemer.webp" class="card-img-top" alt="Christ the Redeemer">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Christ the Redeemer</h5>
+                            <span class="badge bg-warning text-dark">Brazil</span>
+                        </div>
+                        <p class="card-text">Christ the Redeemer is a colossal Art Deco statue of Jesus Christ in Rio de Janeiro, Brazil.</p>
+                        <div class="mb-2">
+                            <small class="text-muted"><i class="fas fa-clock me-1"></i>Best time: Dec-Mar</small>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted"><i class="fas fa-star text-warning"></i> 4.7</span>
+                            <a href="#" class="btn btn-primary btn-sm">Explore <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card destination-card">
+                    <img src="Images/Beach image1.jpg" class="card-img-top" alt="Maldives">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Maldives Beaches</h5>
+                            <span class="badge bg-warning text-dark">Maldives</span>
+                        </div>
+                        <p class="card-text">Pristine white sand beaches and crystal-clear waters perfect for relaxation and water sports.</p>
+                        <div class="mb-2">
+                            <small class="text-muted"><i class="fas fa-clock me-1"></i>Best time: Nov-Apr</small>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted"><i class="fas fa-star text-warning"></i> 4.9</span>
+                            <a href="#" class="btn btn-primary btn-sm">Explore <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card destination-card">
+                    <img src="Images/Mountain image.jpg" class="card-img-top" alt="Swiss Alps">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Swiss Alps</h5>
+                            <span class="badge bg-warning text-dark">Switzerland</span>
+                        </div>
+                        <p class="card-text">Majestic mountain peaks, charming villages, and world-class skiing destinations.</p>
+                        <div class="mb-2">
+                            <small class="text-muted"><i class="fas fa-clock me-1"></i>Best time: Dec-Mar</small>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted"><i class="fas fa-star text-warning"></i> 4.8</span>
+                            <a href="#" class="btn btn-primary btn-sm">Explore <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card destination-card">
+                    <img src="Images/Beach image2.avif" class="card-img-top" alt="Bali">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Bali Paradise</h5>
+                            <span class="badge bg-warning text-dark">Indonesia</span>
+                        </div>
+                        <p class="card-text">Tropical paradise with ancient temples, rice terraces, and vibrant cultural experiences.</p>
+                        <div class="mb-2">
+                            <small class="text-muted"><i class="fas fa-clock me-1"></i>Best time: Apr-Oct</small>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted"><i class="fas fa-star text-warning"></i> 4.7</span>
+                            <a href="#" class="btn btn-primary btn-sm">Explore <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <h4 class="mb-4"><i class="fas fa-plane-departure me-2"></i>ChaloChale</h4>
+                <p>Your trusted travel companion for unforgettable journeys around the world.</p>
+                <div class="mt-3">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <h5 class="mb-4">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="index.html">Home</a></li>
+                    <li class="mb-2"><a href="Destination.html">Destinations</a></li>
+                    <li class="mb-2"><a href="Package.html">Packages</a></li>
+                    <li class="mb-2"><a href="Contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h5 class="mb-4">Top Places</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#">India</a></li>
+                    <li class="mb-2"><a href="#">China</a></li>
+                    <li class="mb-2"><a href="#">Brazil</a></li>
+                    <li class="mb-2"><a href="#">Maldives</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5 class="mb-4">Contact Info</h5>
+                <p><i class="fas fa-phone me-2"></i>+91 98765 43210</p>
+                <p><i class="fas fa-envelope me-2"></i>info@chalochale.com</p>
+                <p><i class="fas fa-map-marker-alt me-2"></i>Mumbai, India</p>
+            </div>
+        </div>
+        <hr class="my-4 bg-light">
+        <div class="text-center">
+            <p class="mb-0">© 2026 ChaloChale. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
